@@ -19,8 +19,12 @@ public class Spawn : MonoBehaviour
 
     public void OnPlayerJoined(PlayerInput input)
     {
+        GameObject boat = GameObject.FindWithTag("Boat");
+        input.transform.SetParent(boat.transform);
         // Put player at spawn point.
         var spawnPoint = GameObject.Find("SpawnPoint");
         input.transform.position = spawnPoint.transform.position;
+
+
     }
 }
