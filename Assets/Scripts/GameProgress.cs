@@ -13,6 +13,7 @@ public class GameProgress : MonoBehaviour
     public float WaterLevelIncreasePerHole = 0.2f;
     public float MaxWaterLevel = 9;
     public Transform BoatWrapper;
+    public RockSpawner RockSpawn;
 
     public float Progress { get; private set; }
     
@@ -42,7 +43,7 @@ public class GameProgress : MonoBehaviour
         {
             Debug.Log("Hit by rock!");
             nextRockHit = -1;
-            holesInHull += 1;
+            RockSpawn.SpawnRock();
             AlertPanel.SetActive(false);
         }
 
@@ -56,6 +57,11 @@ public class GameProgress : MonoBehaviour
         nextRockHit = Time.time + RockHitDelay;
         lastEventTime = Time.time;
         AlertPanel.SetActive(true);
+    }
+
+    public void HitRock()
+    {
+        holesInHull += 1;
     }
 
     public void DodgeRock()
