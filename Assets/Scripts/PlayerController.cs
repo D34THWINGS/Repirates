@@ -13,6 +13,7 @@ public class PlayerController : MonoBehaviour
     private Rigidbody rigidBody;
     private PlayerInput playerInput;
     private List<Collider> collisions = new List<Collider>();
+    private bool hasPlank;
     private bool isGrounded;
     private bool wasGrounded;
 
@@ -53,6 +54,20 @@ public class PlayerController : MonoBehaviour
         if (isGrounded)
         {
             rigidBody.AddForce(Vector3.up * JumpForce, ForceMode.Impulse);
+        }
+    }
+    public void OnInteract()
+    {
+        Collider[] hitColliders = Physics.OverlapSphere(transform.position, 3, LayerMask.GetMask(new string[] { "Interactible" }) );
+        if (hitColliders.Length > 0)
+        {
+            switch (hitColliders[0].gameObject.name)
+            {
+                case "Planks":
+                    hasPlank = true;
+                    break;
+            }
+                    
         }
     }
 
