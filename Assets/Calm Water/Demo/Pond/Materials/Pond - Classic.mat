@@ -9,8 +9,8 @@ Material:
   m_PrefabAsset: {fileID: 0}
   m_Name: Pond - Classic
   m_Shader: {fileID: 4800000, guid: 5113337feed5cb641a5590972b07b9c1, type: 3}
-  m_ShaderKeywords: _BUMPMODE_DUAL _DISPLACEMENTMODE_OFF _DISPLACEMENT_ON _DISTORTIONQUALITY_HIGH
-    _FOAM_ON _REFLECTIONTYPE_MIXED _SCATTER_ON _WHITECAPS_ON
+  m_ShaderKeywords: _BUMPMODE_DUAL _DEPTHFOG_ON _DISPLACEMENTMODE_WAVE _DISPLACEMENT_ON
+    _DISTORTIONQUALITY_HIGH _FOAM_ON _REFLECTIONTYPE_NONE _WHITECAPS_ON
   m_LightmapFlags: 5
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
@@ -97,12 +97,12 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Floats:
-    - _Amplitude: 4
+    - _Amplitude: 10
     - _BumpLargeStrength: 1
     - _BumpMode: 1
     - _BumpScale: 1
     - _BumpStrength: 1
-    - _CapsIntensity: 0.2
+    - _CapsIntensity: 0.1
     - _CapsSize: 1
     - _CapsSpeed: 1
     - _Caustics: 0
@@ -119,12 +119,12 @@ Material:
     - _DepthStart: -1
     - _DetailNormalMapScale: 1
     - _Displacement: 0.06
-    - _DisplacementMode: 0
-    - _Distortion: 32
+    - _DisplacementMode: 1
+    - _Distortion: 0.4
     - _DistortionQuality: 0
     - _DstBlend: 0
-    - _EdgeFade: 4.26
-    - _EnableFog: 0
+    - _EdgeFade: 0.12
+    - _EnableFog: 1
     - _EnableLargeBump: 0
     - _FOAM: 1
     - _FlowIntensity: 1
@@ -141,16 +141,16 @@ Material:
     - _OcclusionStrength: 1
     - _Parallax: 0.02
     - _Reflection: 0.745
-    - _ReflectionType: 1
+    - _ReflectionType: 0
     - _RimPower: 0.434
-    - _Scatter: 1
+    - _Scatter: 0
     - _Smoothing: 1
     - _Smoothness: 0.31
     - _Speed: 1
     - _SpeedX: 0.5
     - _SpeedY: 0.5
     - _SrcBlend: 1
-    - _Steepness: 2.82
+    - _Steepness: 7
     - _Tess: 15.6
     - _UVSec: 0
     - _WhiteCaps: 1
@@ -159,9 +159,9 @@ Material:
     - _specFresnel: 1.43
     - _specIntensity: 1
     m_Colors:
-    - _Color: {r: 0.42647058, g: 1, b: 0.5965517, a: 1}
+    - _Color: {r: 0.427451, g: 0.941121, b: 1, a: 1}
     - _CubeColor: {r: 1, g: 1, b: 1, a: 1}
-    - _DepthColor: {r: 0.32536763, g: 0.6270037, b: 0.75, a: 1}
+    - _DepthColor: {r: 0.1764418, g: 0.43763638, b: 0.5754717, a: 1}
     - _DisplacementSpeed: {r: 1, g: 1, b: 1, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
     - _FoamColor: {r: 0.9103774, g: 0.97555745, b: 1, a: 1}

@@ -197,6 +197,10 @@ MonoBehaviour:
   BoatSpeed: 3
   GameDuration: 180
   TimeBetweenEvents: 7
+  RockHitDelay: 5
+  WaterLevelIncreasePerHole: 0.2
+  MaxWaterLevel: 9
+  BoatWrapper: {fileID: 327475859}
 --- !u!4 &146343149
 Transform:
   m_ObjectHideFlags: 0
@@ -209,14 +213,14 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &299261558
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
-    m_TransformParent: {fileID: 0}
+    m_TransformParent: {fileID: 327475859}
     m_Modifications:
     - target: {fileID: -8531617508091796172, guid: 8dfdc4fcd0b39a844b52a5de9c015a20,
         type: 3}
@@ -236,7 +240,7 @@ PrefabInstance:
     - target: {fileID: -4216859302048453862, guid: 8dfdc4fcd0b39a844b52a5de9c015a20,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -24.8
+      value: -25.38
       objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: 8dfdc4fcd0b39a844b52a5de9c015a20,
         type: 3}
@@ -246,7 +250,7 @@ PrefabInstance:
     - target: {fileID: -4216859302048453862, guid: 8dfdc4fcd0b39a844b52a5de9c015a20,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: 8dfdc4fcd0b39a844b52a5de9c015a20,
         type: 3}
@@ -256,7 +260,7 @@ PrefabInstance:
     - target: {fileID: -4216859302048453862, guid: 8dfdc4fcd0b39a844b52a5de9c015a20,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: 8dfdc4fcd0b39a844b52a5de9c015a20,
         type: 3}
@@ -360,6 +364,38 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8dfdc4fcd0b39a844b52a5de9c015a20, type: 3}
+--- !u!1 &327475858
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 327475859}
+  m_Layer: 0
+  m_Name: BoatWrapper
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &327475859
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 327475858}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 1375140702}
+  - {fileID: 1046759905}
+  m_Father: {fileID: 0}
+  m_RootOrder: 6
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &473549622
 GameObject:
   m_ObjectHideFlags: 0
@@ -496,11 +532,17 @@ Transform:
   m_LocalScale: {x: 10, y: 1, z: 30}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: -89.999}
 --- !u!1 &1046759904 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: -927199367670048503, guid: 8dfdc4fcd0b39a844b52a5de9c015a20,
+    type: 3}
+  m_PrefabInstance: {fileID: 299261558}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &1046759905 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -4216859302048453862, guid: 8dfdc4fcd0b39a844b52a5de9c015a20,
     type: 3}
   m_PrefabInstance: {fileID: 299261558}
   m_PrefabAsset: {fileID: 0}
@@ -705,7 +747,7 @@ Transform:
   m_LocalPosition: {x: 49.4, y: 17.5, z: 2.3}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 327475859}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 9.59, y: -90.00001, z: 0}
 --- !u!1 &1491046167 stripped
@@ -778,7 +820,7 @@ PrefabInstance:
     - target: {fileID: 2615605132658748217, guid: cb4b55336ccba4ee4aec0655c69b63d5,
         type: 3}
       propertyPath: m_RootOrder
-      value: 6
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 2615605132658748217, guid: cb4b55336ccba4ee4aec0655c69b63d5,
         type: 3}
@@ -904,7 +946,7 @@ Transform:
   - {fileID: 64728952}
   - {fileID: 1130047380}
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1832619802
 GameObject:
@@ -980,7 +1022,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1832619805
 MonoBehaviour:
@@ -1084,5 +1126,5 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 164.426, y: 89.99999, z: 89.99999}
