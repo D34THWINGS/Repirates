@@ -1,6 +1,8 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class GameProgress : MonoBehaviour
 {
@@ -19,12 +21,17 @@ public class GameProgress : MonoBehaviour
     private float nextRockHit = -1;
     private int holesInHull = 0;
     private float waterLevel = 0;
+    public Slider slider;
+
+    public Text Timer;
+    public GameObject AlertPanel;
 
     // Start is called before the first frame update
     void Start()
     {
         endTime = Time.time + GameDuration;
         lastEventTime = Time.time;
+        Timer.text = Format(endTime);
         StartCoroutine("OnTimerTick");
     }
 
@@ -36,6 +43,7 @@ public class GameProgress : MonoBehaviour
             Debug.Log("Hit by rock!");
             nextRockHit = -1;
             holesInHull += 1;
+            AlertPanel.SetActive(false);
         }
 
         var targetWaterLvel = new Vector3(BoatWrapper.position.x, -waterLevel, BoatWrapper.position.z);
@@ -47,11 +55,13 @@ public class GameProgress : MonoBehaviour
         Debug.Log("Rock approaching!");
         nextRockHit = Time.time + RockHitDelay;
         lastEventTime = Time.time;
+        AlertPanel.SetActive(true);
     }
 
     public void DodgeRock()
     {
         nextRockHit = -1;
+        AlertPanel.SetActive(false);
     }
 
     void Lose()
@@ -74,6 +84,9 @@ public class GameProgress : MonoBehaviour
             Debug.Log("Time left: " + Mathf.RoundToInt(endTime - Time.time) + "s; Progress: " + Progress + "%; Water level: " + waterLevel);
 
             waterLevel += holesInHull * WaterLevelIncreasePerHole;
+            slider.value = Progress;
+            float secs = (endTime - Time.time);
+            Timer.text = Format(secs);
 
             if (lastEventTime + TimeBetweenEvents < Time.time)
             {
@@ -87,5 +100,11 @@ public class GameProgress : MonoBehaviour
         {
             Lose();
         }
+    }
+
+    string Format(float second)
+    {
+        TimeSpan t = TimeSpan.FromSeconds(second);
+        return string.Format("{0:D2}:{1:D2}", t.Minutes, t.Seconds);
     }
 }
