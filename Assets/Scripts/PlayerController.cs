@@ -58,10 +58,20 @@ public class PlayerController : MonoBehaviour
 
     public void MovePlayer()
     {
-        if (direction != Vector2.zero)
-            transform.rotation = Quaternion.LookRotation(new Vector3(direction.x, 0, direction.y));
-        transform.position += new Vector3(direction.x, 0, direction.y) * Speed * Time.deltaTime;
+
+        var camera = Camera.main.transform;
+        var cameraDirection = camera.forward * direction.y + camera.right * direction.x;
+        var directionLength = direction.magnitude;
+        cameraDirection.y = 0;
+        var normalizedDirection = cameraDirection.normalized * directionLength;
+        var moveVector = new Vector3(normalizedDirection.x, 0, normalizedDirection.z) * Speed * Time.deltaTime;
+
+        transform.position += moveVector;
         animator.SetFloat("MoveSpeed", direction.magnitude);
+
+
+        if (direction != Vector2.zero)
+            transform.rotation = Quaternion.LookRotation(moveVector);
     }
 
     private void OnCollisionEnter(Collision collision)
