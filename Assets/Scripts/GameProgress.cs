@@ -27,6 +27,8 @@ public class GameProgress : MonoBehaviour
     public Text Timer;
     public GameObject AlertPanel;
     public GameObject ArrowDown;
+    public GameObject LosePanel;
+    public GameObject WinPanel;
 
     // Start is called before the first frame update
     void Start()
@@ -100,11 +102,13 @@ public class GameProgress : MonoBehaviour
     {
         Debug.Log("Game lost!");
         BoatWrapper.GetComponentInChildren<Animator>().Play("Sinking");
+        LosePanel.SetActive(true);
     }
 
     void Win()
     {
         Debug.Log("Game won!");
+        WinPanel.SetActive(true);
     }
 
     IEnumerator OnTimerTick()
