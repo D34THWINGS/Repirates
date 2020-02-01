@@ -24,6 +24,7 @@ public class GameProgress : MonoBehaviour
     public Slider slider;
 
     public Text Timer;
+    public GameObject AlertPanel;
 
     // Start is called before the first frame update
     void Start()
@@ -42,6 +43,7 @@ public class GameProgress : MonoBehaviour
             Debug.Log("Hit by rock!");
             nextRockHit = -1;
             holesInHull += 1;
+            AlertPanel.SetActive(false);
         }
 
         var targetWaterLvel = new Vector3(BoatWrapper.position.x, -waterLevel, BoatWrapper.position.z);
@@ -53,11 +55,13 @@ public class GameProgress : MonoBehaviour
         Debug.Log("Rock approaching!");
         nextRockHit = Time.time + RockHitDelay;
         lastEventTime = Time.time;
+        AlertPanel.SetActive(true);
     }
 
     public void DodgeRock()
     {
         nextRockHit = -1;
+        AlertPanel.SetActive(false);
     }
 
     void Lose()
