@@ -57,6 +57,7 @@ public class GameProgress : MonoBehaviour
     void Lose()
     {
         Debug.Log("Game lost!");
+        BoatWrapper.GetComponentInChildren<Animator>().Play("Sinking");
     }
 
     void Win()
