@@ -1065,6 +1065,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Speed: 3
   JumpForce: 10
+  SmashNumber: 20
 --- !u!114 &-5065668830305335091
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -41,8 +41,8 @@ public class GameProgress : MonoBehaviour
     {
         if (nextRockHit != -1 && nextRockHit < Time.time)
         {
-            Debug.Log("Hit by rock!");
             nextRockHit = -1;
+            Debug.Log("Hit by rock!");
             RockSpawn.SpawnRock();
             AlertPanel.SetActive(false);
         }
@@ -58,10 +58,32 @@ public class GameProgress : MonoBehaviour
         lastEventTime = Time.time;
         AlertPanel.SetActive(true);
     }
-
+    public void repairHole()
+    {
+        holesInHull -= 1;
+        waterLevel -= 2;
+    }
+    public GameObject findHole(int HoleNumber)
+    {
+        var GameObjects = Resources.FindObjectsOfTypeAll<GameObject>();
+        foreach (GameObject objects in GameObjects){
+            if (objects.name == "Hole (" + HoleNumber.ToString() + ")")
+            {
+                return objects;
+            }
+        }
+        return new GameObject();
+    }
     public void HitRock()
     {
         holesInHull += 1;
+        int holeInt = UnityEngine.Random.Range(1, 19);
+        GameObject HoleGameObject = findHole(holeInt);
+        if (HoleGameObject.activeSelf)
+        {
+            HitRock();
+        }
+        HoleGameObject.SetActive(true);
     }
 
     public void DodgeRock()
