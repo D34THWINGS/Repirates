@@ -26,6 +26,7 @@ public class GameProgress : MonoBehaviour
 
     public Text Timer;
     public GameObject AlertPanel;
+    public GameObject ArrowDown;
 
     // Start is called before the first frame update
     void Start()
@@ -45,6 +46,7 @@ public class GameProgress : MonoBehaviour
             Debug.Log("Hit by rock!");
             RockSpawn.SpawnRock();
             AlertPanel.SetActive(false);
+            ArrowDown.SetActive(false);
         }
 
         var targetWaterLvel = new Vector3(BoatWrapper.position.x, -waterLevel, BoatWrapper.position.z);
@@ -57,6 +59,7 @@ public class GameProgress : MonoBehaviour
         nextRockHit = Time.time + RockHitDelay;
         lastEventTime = Time.time;
         AlertPanel.SetActive(true);
+        ArrowDown.SetActive(true);
     }
     public void repairHole()
     {
@@ -90,6 +93,7 @@ public class GameProgress : MonoBehaviour
     {
         nextRockHit = -1;
         AlertPanel.SetActive(false);
+        ArrowDown.SetActive(false);
     }
 
     void Lose()
@@ -133,6 +137,6 @@ public class GameProgress : MonoBehaviour
     string Format(float second)
     {
         TimeSpan t = TimeSpan.FromSeconds(second);
-        return string.Format("{0:D2}:{1:D2}", t.Minutes, t.Seconds);
+        return string.Format("{0:D2} : {1:D2}", t.Minutes, t.Seconds);
     }
 }
