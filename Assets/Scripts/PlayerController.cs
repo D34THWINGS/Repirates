@@ -41,8 +41,7 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-        animator.SetBool("Grounded", isGrounded);
-        animator.Play("Walking");
+        animator.SetBool("Grounded", isGrounded);   
 
         MovePlayer();
 
@@ -108,7 +107,7 @@ public class PlayerController : MonoBehaviour
                         hasPlank = false;
                         currentSpeed = Speed;
                         Speed = 0;
-                        animator.enabled = false;
+                        animator.SetBool("isSmashing", true);
                     }
                     else
                     {
@@ -131,12 +130,12 @@ public class PlayerController : MonoBehaviour
             if (keySmashed == SmashNumber)  
             {
                 Debug.Log("Hole repaired"); // Fix hole in GameManager and remove plank from player ui
+                animator.SetBool("isSmashing", false);
                 GameManager.repairHole();
                 keySmashed = 0;
                 smashStarted = false;
                 Speed = currentSpeed;
                 holeRepairing.SetActive(false);
-                animator.enabled = true;
                 SmashBar.transform.parent.gameObject.SetActive(false);
             }
         }
