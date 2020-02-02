@@ -81,13 +81,14 @@ public class GameProgress : MonoBehaviour
     }
     public void HitRock()
     {
-        holesInHull += 1;
+        if (GameObject.FindGameObjectsWithTag("Holes").Length == 19) // No more hole to open
+        {
+            Debug.Log("No more hole to show");
+            return;
+        }
         int holeInt = UnityEngine.Random.Range(1, 19);
         GameObject HoleGameObject = findHole(holeInt);
-        if (HoleGameObject.activeSelf)
-        {
-            HitRock();
-        }
+        holesInHull += 1;
         HoleGameObject.SetActive(true);
     }
 
