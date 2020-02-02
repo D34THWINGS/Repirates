@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 2050524566}
-  m_IndirectSpecularColor: {r: 0.6483466, g: 0.75619394, b: 0.81349325, a: 1}
+  m_IndirectSpecularColor: {r: 0.64856786, g: 0.75614774, b: 0.8137418, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -6041,6 +6041,81 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: -370759632175529254, guid: 4d56f75360f385a4bb5c1bc36d090dc3, type: 3}
+--- !u!1001 &1810058367
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: -6545378835523365164, guid: f65b8fe23de61a44daa3b73c5f424882,
+        type: 3}
+      propertyPath: m_Actions
+      value: 
+      objectReference: {fileID: -944628639613478452, guid: b05eb71ac6c41400d9d2a863cbdacf11,
+        type: 3}
+    - target: {fileID: 5363108731141320264, guid: f65b8fe23de61a44daa3b73c5f424882,
+        type: 3}
+      propertyPath: m_Name
+      value: CHR_Pirates_01
+      objectReference: {fileID: 0}
+    - target: {fileID: 8950569050974428251, guid: f65b8fe23de61a44daa3b73c5f424882,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8950569050974428251, guid: f65b8fe23de61a44daa3b73c5f424882,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8950569050974428251, guid: f65b8fe23de61a44daa3b73c5f424882,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8950569050974428251, guid: f65b8fe23de61a44daa3b73c5f424882,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8950569050974428251, guid: f65b8fe23de61a44daa3b73c5f424882,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8950569050974428251, guid: f65b8fe23de61a44daa3b73c5f424882,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8950569050974428251, guid: f65b8fe23de61a44daa3b73c5f424882,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8950569050974428251, guid: f65b8fe23de61a44daa3b73c5f424882,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 8950569050974428251, guid: f65b8fe23de61a44daa3b73c5f424882,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8950569050974428251, guid: f65b8fe23de61a44daa3b73c5f424882,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8950569050974428251, guid: f65b8fe23de61a44daa3b73c5f424882,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: f65b8fe23de61a44daa3b73c5f424882, type: 3}
 --- !u!1 &1812003614
 GameObject:
   m_ObjectHideFlags: 0

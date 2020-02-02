@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.UI;
 
 public class PlayerController : MonoBehaviour
 {
@@ -24,6 +25,8 @@ public class PlayerController : MonoBehaviour
     private bool smashStarted;
     private float currentSpeed;
     private int keySmashed = 0;
+
+    public Image SmashBar;
 
     // Start is called before the first frame update
     void Start()
@@ -82,6 +85,7 @@ public class PlayerController : MonoBehaviour
                 {
                     if (hasPlank)
                     {
+                        SmashBar.fillAmount = 0;
                         Debug.Log("Repairing Hole, please SMASH Y"); // Show smash animation above player 
                         holeRepairing = hitColliders[0].gameObject;
                         smashStarted = true;
@@ -104,7 +108,10 @@ public class PlayerController : MonoBehaviour
         if (smashStarted)
         {
             keySmashed++;
-            Debug.Log(keySmashed);  
+            Debug.Log("keySmashed: " + keySmashed + "Amount: " + (keySmashed / SmashNumber));
+            keySmashed = Mathf.Clamp(keySmashed, 0, SmashNumber);
+            float amount = (float)keySmashed / SmashNumber;
+            SmashBar.fillAmount = amount;
             if (keySmashed == SmashNumber)  
             {
                 Debug.Log("Hole repaired"); // Fix hole in GameManager and remove plank from player ui
