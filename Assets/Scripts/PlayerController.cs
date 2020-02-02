@@ -11,7 +11,7 @@ public class PlayerController : MonoBehaviour
     public float JumpForce = 10.0f;
     public int SmashNumber = 20;
     public GameObject PauseMenu;
-
+    private Transform playerRig;
     private Vector2 direction = new Vector2();
     private Animator animator;
     private Rigidbody rigidBody;
@@ -31,9 +31,11 @@ public class PlayerController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        animator = gameObject.GetComponent<Animator>();
+        playerRig = transform.GetChild(0);
+        animator = playerRig.gameObject.GetComponent<Animator>();
         rigidBody = gameObject.GetComponent<Rigidbody>();
         GameManager = GameObject.Find("GameManager").GetComponent<GameProgress>();
+        SmashBar.transform.parent.gameObject.SetActive(false);
     }
 
     // Update is called once per frame
@@ -98,6 +100,7 @@ public class PlayerController : MonoBehaviour
                 {
                     if (hasPlank)
                     {
+                        SmashBar.transform.parent.gameObject.SetActive(true);
                         SmashBar.fillAmount = 0;
                         Debug.Log("Repairing Hole, please SMASH Y"); // Show smash animation above player 
                         holeRepairing = hitColliders[0].gameObject;
@@ -105,7 +108,7 @@ public class PlayerController : MonoBehaviour
                         hasPlank = false;
                         currentSpeed = Speed;
                         Speed = 0;
-                        gameObject.GetComponent<Animator>().enabled = false;
+                        animator.enabled = false;
                     }
                     else
                     {
@@ -122,7 +125,6 @@ public class PlayerController : MonoBehaviour
         if (smashStarted)
         {
             keySmashed++;
-            Debug.Log("keySmashed: " + keySmashed + "Amount: " + (keySmashed / SmashNumber));
             keySmashed = Mathf.Clamp(keySmashed, 0, SmashNumber);
             float amount = (float)keySmashed / SmashNumber;
             SmashBar.fillAmount = amount;
@@ -134,7 +136,8 @@ public class PlayerController : MonoBehaviour
                 smashStarted = false;
                 Speed = currentSpeed;
                 holeRepairing.SetActive(false);
-                gameObject.GetComponent<Animator>().enabled = true;
+                animator.enabled = true;
+                SmashBar.transform.parent.gameObject.SetActive(false);
             }
         }
     }
@@ -154,7 +157,7 @@ public class PlayerController : MonoBehaviour
 
 
         if (direction != Vector2.zero)
-            transform.rotation = Quaternion.LookRotation(moveVector);
+            playerRig.rotation = Quaternion.LookRotation(moveVector);
     }
 
     private void OnCollisionEnter(Collision collision)
