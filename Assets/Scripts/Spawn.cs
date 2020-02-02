@@ -5,6 +5,8 @@ using UnityEngine.InputSystem;
 
 public class Spawn : MonoBehaviour
 {
+    public GameObject PauseMenu;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -24,7 +26,6 @@ public class Spawn : MonoBehaviour
         // Put player at spawn point.
         var spawnPoint = GameObject.Find("SpawnPoint");
         input.transform.position = spawnPoint.transform.position;
-
-
+        input.GetComponent<PlayerController>().PauseMenu = PauseMenu;
     }
 }

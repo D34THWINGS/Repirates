@@ -9,12 +9,12 @@ public class PlayerController : MonoBehaviour
     public float Speed = 3.0f;
     public float JumpForce = 10.0f;
     public int SmashNumber = 20;
+    public GameObject PauseMenu;
 
     private Vector2 direction = new Vector2();
     private Animator animator;
     private Rigidbody rigidBody;
     private GameProgress GameManager;
-    private PlayerInput playerInput;
     private List<Collider> collisions = new List<Collider>();
     private bool hasPlank;
     private bool isGrounded;
@@ -53,13 +53,20 @@ public class PlayerController : MonoBehaviour
         wasGrounded = isGrounded;
     }
 
+    void OnTogglePauseMenu()
+    {
+        PauseMenu.SetActive(!PauseMenu.activeInHierarchy);
+    }
+
     public void OnMove(InputValue inputValue)
     {
+        if (PauseMenu.activeInHierarchy) return;
         direction = inputValue.Get<Vector2>();
     }
 
     public void OnJump()
     {
+        if (PauseMenu.activeInHierarchy) return;
         if (isGrounded)
         {
             rigidBody.AddForce(Vector3.up * JumpForce, ForceMode.Impulse);
@@ -67,6 +74,11 @@ public class PlayerController : MonoBehaviour
     }
     public void OnInteract()
     {
+        if (PauseMenu.activeInHierarchy) {
+            PauseMenu.SetActive(false);
+            return;
+        }
+
         Collider[] hitColliders = Physics.OverlapSphere(transform.position, 3, LayerMask.GetMask(new string[] { "Interactible" }));
         if (hitColliders.Length > 0)
         {
@@ -101,6 +113,7 @@ public class PlayerController : MonoBehaviour
     }
     public void OnSmash()
     {
+        if (PauseMenu.activeInHierarchy) return;
         if (smashStarted)
         {
             keySmashed++;
@@ -120,7 +133,7 @@ public class PlayerController : MonoBehaviour
 
     public void MovePlayer()
     {
-
+        if (PauseMenu.activeInHierarchy) return;
         var camera = Camera.main.transform;
         var cameraDirection = camera.forward * direction.y + camera.right * direction.x;
         var directionLength = direction.magnitude;
