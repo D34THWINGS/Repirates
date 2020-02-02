@@ -6,7 +6,7 @@
 // Upgrade NOTE: replaced '_Object2World' with 'unity_ObjectToWorld'
 
  Shader "FX/FlatShadedWaterWithEdgeBlend" {
-Properties { 
+Properties {	
 
 	_BaseColor ("Base color", COLOR)  = ( 0, 0, 0, 0.5) 
 	_SpecColor ("Specular Material Color", Color) = (1,1,1,1) 
