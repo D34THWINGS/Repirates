@@ -40,6 +40,7 @@ public class PlayerController : MonoBehaviour
     void FixedUpdate()
     {
         animator.SetBool("Grounded", isGrounded);
+        animator.Play("Walking");
 
         MovePlayer();
 
