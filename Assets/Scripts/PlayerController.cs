@@ -47,12 +47,8 @@ public class PlayerController : MonoBehaviour
 
         if (!wasGrounded && isGrounded)
         {
+            animator.ResetTrigger("Jump");
             animator.SetTrigger("Land");
-        }
-
-        if (!isGrounded && wasGrounded)
-        {
-            animator.SetTrigger("Jump");
         }
 
         wasGrounded = isGrounded;
@@ -74,6 +70,7 @@ public class PlayerController : MonoBehaviour
         if (PauseMenu.activeInHierarchy) return;
         if (isGrounded)
         {
+            animator.SetTrigger("Jump");
             rigidBody.AddForce(Vector3.up * JumpForce, ForceMode.Impulse);
         }
     }

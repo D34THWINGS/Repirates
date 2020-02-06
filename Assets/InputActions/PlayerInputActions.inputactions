@@ -170,6 +170,17 @@
                 },
                 {
                     "name": "",
+                    "id": "26231e62-391a-44e3-aaab-25ccf8bcb216",
+                    "path": "<Keyboard>/t",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Smash",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
                     "id": "7a4b6929-e2fa-4d9c-996f-4820e9eb815a",
                     "path": "<Keyboard>/escape",
                     "interactions": "",

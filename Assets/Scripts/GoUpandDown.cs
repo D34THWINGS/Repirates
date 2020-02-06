@@ -5,8 +5,9 @@ using UnityEngine;
 public class GoUpandDown : MonoBehaviour
 {
     public float maxYAcceleration = 10.0f;
-    public float maxZAcceleration = -5f;
-    // Start is called before the first frame update
+    public float maxZAcceleration = -10f;
+    // Start is called before the first frame updat
+    
     void Start()
     {
         
@@ -20,12 +21,23 @@ public class GoUpandDown : MonoBehaviour
 
     void OnTriggerStay(Collider other)
     {
-        if (other.tag == "Player") { 
-            if (other.attachedRigidbody.transform.forward.z < 0 && other.attachedRigidbody.velocity.magnitude > 0
-                && other.attachedRigidbody.velocity.z > -2) // If facing left and in movement and not too fast
+        if (other.tag == "Player") {
+            other.attachedRigidbody.useGravity = false;
+            other.attachedRigidbody.velocity = new Vector3(0, 0, 0);
+            Transform PlayerMesh = other.attachedRigidbody.transform.GetChild(0);
+            if (PlayerMesh.forward.z < 0 && other.attachedRigidbody.velocity.magnitude > 0) // If facing left and in movement and not too fast
             {
                 other.attachedRigidbody.AddForce(0, maxYAcceleration, maxZAcceleration, ForceMode.Acceleration); // Accelerate the player
             }
+        }
+    }
+
+    void OnTriggerExit(Collider other)
+    {
+        if (other.tag == "Player")
+        {
+            other.attachedRigidbody.velocity = new Vector3(0, -10, 0);
+            other.attachedRigidbody.useGravity = true;
         }
     }
 }
